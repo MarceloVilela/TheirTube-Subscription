@@ -2,11 +2,22 @@ const theirtube = require('./theirtube.js');
 const schedule = require('node-schedule');
 const argv = require('yargs').argv;
 const chalk = require('chalk');
+const env = require('../env');
 
 let minute;
 let hour;
 let iterationAmmount;
 let iterationCount = -1;
+
+(async() => {
+   await theirtube.initialize();
+   //await theirtube.login();
+   //await theirtube.switchAccount(persona);
+   await theirtube.scrape([env.yt_user, env.yt_pass]);
+   return;
+})()
+
+return;
 
 //npm run scrape -- --scrapeMinute=03 --scrapeHour=17 
 if ( (argv.scrapeMinute != null) && (argv.scrapeHour != null)) {
