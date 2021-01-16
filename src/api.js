@@ -1,10 +1,10 @@
 const axios = require('axios')
-const env = require('../env');
+require('dotenv').config()
 
 const api = axios.create({
-    baseURL: env.api_url,
+    baseURL: process.env.api_url,
 });
 
-api.defaults.headers.common['Authorization'] = `Bearer ${env.api_token}`;
+api.defaults.headers.common['Authorization'] = `Bearer ${process.env.api_token}`;
 
 module.exports = api;

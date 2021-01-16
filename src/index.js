@@ -2,7 +2,8 @@ const theirtube = require('./theirtube.js');
 const schedule = require('node-schedule');
 const argv = require('yargs').argv;
 const chalk = require('chalk');
-const env = require('../env');
+
+require('dotenv').config()
 
 let minute;
 let hour;
@@ -13,7 +14,7 @@ let iterationCount = -1;
    await theirtube.initialize();
    //await theirtube.login();
    //await theirtube.switchAccount(persona);
-   await theirtube.scrape([env.yt_user, env.yt_pass]);
+   await theirtube.scrape([process.env.yt_user, process.env.yt_pass]);
    return;
 })()
 
